@@ -110,10 +110,7 @@
       }
     },
     created() {
-        axios.post('http://127.0.0.1:8989/IVS/tapplay/play.do?callId=180208105351&playType=4').then((res) => {
-              this.goods = res
-              console.log(res);
-            })
+        
     },
     methods: {
         scrollNavClick(index,path){
