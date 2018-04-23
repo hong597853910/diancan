@@ -1,30 +1,33 @@
 <template>
-    <div class='dfooter'>
-        <div class="footer-icondiv">
-            <router-link to="/index">
-                <i class="icon iconfont icon-shouye1 footer-icon"></i>
-                <h5 class="footer-icon-font">首页</h5>
-            </router-link>
-        </div>
-        <div class="footer-icondiv">
-            <router-link to="/goods">
-                <i class="icon iconfont icon-canting footer-icon"></i>
-                <h5 class="footer-icon-font">点单</h5>
-            </router-link>
-        </div>
-        <div class="footer-icondiv" >
-            <router-link to="/orders">
-                <i class="icon iconfont icon-wodedingdan footer-icon"></i>
-                <h5 class="footer-icon-font">订单</h5>
-            </router-link>
-        </div>
-        <div class="footer-icondiv">
-            <router-link to="/personalCenter">
-                <i class="icon iconfont icon-wodejuhuasuan footer-icon"></i>
-                <h5 class="footer-icon-font">
-                    我的资料
-                </h5> 
-            </router-link>
+    <div>
+        <router-view style="margin-bottom:60px"></router-view>    
+        <div class='dfooter'>
+            <div class="footer-icondiv">
+                <router-link to="/index">
+                    <i class="icon iconfont icon-shouye1 footer-icon"></i>
+                    <h5 class="footer-icon-font">首页</h5>
+                </router-link>
+            </div>
+            <div class="footer-icondiv">
+                <router-link to="/goods">
+                    <i class="icon iconfont icon-canting footer-icon"></i>
+                    <h5 class="footer-icon-font">点单</h5>
+                </router-link>
+            </div>
+            <div class="footer-icondiv" >
+                <router-link to="/orders">
+                    <i class="icon iconfont icon-wodedingdan footer-icon"></i>
+                    <h5 class="footer-icon-font">订单</h5>
+                </router-link>
+            </div>
+            <div class="footer-icondiv">
+                <router-link to="/personalCenter">
+                    <i class="icon iconfont icon-wodejuhuasuan footer-icon"></i>
+                    <h5 class="footer-icon-font">
+                        我的资料
+                    </h5> 
+                </router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -52,6 +55,10 @@ export default {
 
 <style lang="stylus" scoped>
     .dfooter
+        position:fixed;
+        margin: 0;
+        bottom:0;
+        width: 100%;
         border-top: solid 1px #EEE;
         overflow: hidden;
         background: #fff;

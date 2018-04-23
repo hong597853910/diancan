@@ -1,5 +1,6 @@
 <template>
   <div id="index">
+
     <div class="block place">
       <el-carousel trigger="click" height="160px">
         <el-carousel-item v-for="item in imgUrl" :key="item">
@@ -47,7 +48,7 @@
             <img src="/static/img/food/food2.jpg"/>
           </div>
           <div class="food-detail">
-            <div class="food-detail-nav name">火锅肉</div>
+            <div class="food-detail-nav name">东坡肉</div>
             <div class="food-detail-nav name">
               <div class="food-userlike">
                 <i class="icon iconfont icon-zan"/>用户推荐数：100
@@ -65,7 +66,7 @@
             <img src="/static/img/food/food1.jpg"/>
           </div>
           <div class="food-detail">
-            <div class="food-detail-nav name">火锅肉</div>
+            <div class="food-detail-nav name">咕噜肉</div>
             <div class="food-detail-nav">
               <div class="food-userlike">
                 <i class="icon iconfont icon-zan"/>用户推荐数：100
@@ -94,13 +95,18 @@
   import cart from '../../cart/cart'
   import appointment from '../appointment/appointment'
   import axios from 'axios'
+
+  let scan = null;
+
+
   export default{
     data(){
       return{
         selectedOrder:'1',
         scrollNav : 1,
         goods:'',
-        imgUrl:[require("./img/place1.jpg"),require("./img/place2.jpg")]
+        imgUrl:[require("./img/place1.jpg"),require("./img/place2.jpg")],
+        codeUrl: '',
       }
     },
     created() {
@@ -123,6 +129,7 @@
             //     this.$refs.appointmentRef.aptmShowToggle()
             // })
         },
+
     },
     components:{
       cartcontrol,

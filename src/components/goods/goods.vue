@@ -1,50 +1,62 @@
 <template lang="html">
-  <div class="goods">
-     <div class="menu-wrapper" ref="menuWrapper">
-      <ul style='padding: 0;'>
-        <li v-for="(item,index) in goods" @click="menuClick(index,$event)" :class="index==menuCurrentIndex?'menu-item-selected':'menu-item'">
-          <span class="text">
-            <iconMap v-show="item.type>0" :iconType="item.type"></iconMap>
-            {{item.name}}
-          </span>
-        </li>
-      </ul>
+  <div>
+    <div class="deskSelect">
+      桌位：
+      <el-select v-model="value" placeholder="请选择">
+        <el-option
+          v-for="item in desks"
+          :key="item"
+          :label="item"
+          :value="item">
+        </el-option>
+      </el-select>
     </div>
-    <div class="foods-wrapper" id="wrapper" ref="foodsWrapper">
-      <ul style='padding: 0;margin:0;'>
-        <li v-for="item in goods" class="food-list food-list-hook">
-          <h1>{{item.name}}</h1>
-          <ul style='padding: 0;'>
-            <li v-for="food in item.foods" class="food-item" @click="goDetail(food)">
-              <div class="icon">
-                <img width="57" height="57" :src="food.icon"/>
-              </div>
-              <div class="content">
-                <h2>{{food.name}}</h2>
-                <p class="description" v-show="food.description">{{food.description}}</p>
-                <div class="sell-info">
-                  <span class="sellCount">月售{{food.sellCount}}份</span>
-                  <span class="rating">好评率{{food.rating}}%</span>
+    <div class="goods">
+      <div class="menu-wrapper" ref="menuWrapper">
+        <ul style='padding: 0;'>
+          <li v-for="(item,index) in goods" @click="menuClick(index,$event)" :class="index==menuCurrentIndex?'menu-item-selected':'menu-item'">
+            <span class="text">
+              <iconMap v-show="item.type>0" :iconType="item.type"></iconMap>
+              {{item.name}}
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="foods-wrapper" id="wrapper" ref="foodsWrapper">
+        <ul style='padding: 0;margin:0;'>
+          <li v-for="item in goods" class="food-list food-list-hook">
+            <h1>{{item.name}}</h1>
+            <ul style='padding: 0;'>
+              <li v-for="food in item.foods" class="food-item" @click="goDetail(food)">
+                <div class="icon">
+                  <img width="57" height="57" :src="food.icon"/>
                 </div>
-                <div class="price">
-                  <span class="newPrice"><span class="unit">￥</span>{{food.price}}</span>
-                  <span v-show="food.oldPrice" class="oldPrice">￥{{food.oldPrice}}</span>
+                <div class="content">
+                  <h2>{{food.name}}</h2>
+                  <p class="description" v-show="food.description">{{food.description}}</p>
+                  <div class="sell-info">
+                    <span class="sellCount">月售{{food.sellCount}}份</span>
+                    <span class="rating">好评率{{food.rating}}%</span>
+                  </div>
+                  <div class="price">
+                    <span class="newPrice"><span class="unit">￥</span>{{food.price}}</span>
+                    <span v-show="food.oldPrice" class="oldPrice">￥{{food.oldPrice}}</span>
+                  </div>
+                  <div class="cartcontrol-wrapper">
+                    <cartcontrol :food="food"></cartcontrol>
+                  </div>
                 </div>
-                <div class="cartcontrol-wrapper">
-                  <cartcontrol :food="food"></cartcontrol>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <!-- <shopCart :deliveryPrice="seller.deliveryPrice" :minPrice = "seller.minPrice" :selectFoods="selectFoods"></shopCart> -->
-    <cart :deliveryPrice="seller.deliveryPrice" :minPrice = "seller.minPrice" :selectFoods="selectFoods"></cart>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- <shopCart :deliveryPrice="seller.deliveryPrice" :minPrice = "seller.minPrice" :selectFoods="selectFoods"></shopCart> -->
+      <cart :deliveryPrice="seller.deliveryPrice" :minPrice = "seller.minPrice" :selectFoods="selectFoods"></cart>
 
-    <foodDetail :food="selectedFood" v-if="selectedFood" ref="myFood"></foodDetail>
+      <foodDetail :food="selectedFood" v-if="selectedFood" ref="myFood"></foodDetail>
+    </div>
   </div>
-
 </template>
 
 <script>
@@ -76,6 +88,7 @@ export default {
   data() {
     return {
     seller: Object,
+      desks: ['一号桌','二号桌'],
       goods: [],
       listHeight: [],
       foodsScrollY: 0,
@@ -155,10 +168,13 @@ export default {
 
 <style lang="stylus">
 @import '../../common/stylus/mixin'
+  .deskSelect
+    padding-left 30px
+    height 40px
   .goods
     display flex
     position absolute
-    height 98%
+    height 86%
     width 98%
     overflow hidden
     .menu-wrapper

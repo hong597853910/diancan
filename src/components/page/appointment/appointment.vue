@@ -61,6 +61,7 @@
                 <el-input v-model="input" placeholder="手机号码"></el-input> 
             </div> 
             <div class="nav-input">
+                人数：
                 <el-select v-model="deskOpt" placeholder="请选择">
                     <el-option
                     v-for="item in desks"
@@ -69,6 +70,14 @@
                     :value="item">
                     </el-option>
                 </el-select>
+            </div>
+             <div class="nav-input">
+                 预约时间：
+                 <el-date-picker
+                    v-model="value1"
+                    type="datetime"
+                    placeholder="选择日期时间">
+                </el-date-picker>
             </div>
             <div class="nav-button">
                 <el-button class="change-value" style="width:100%"  type="primary" @onclick="login()">预约</el-button>

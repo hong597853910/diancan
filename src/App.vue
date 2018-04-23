@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <router-view style="margin-bottom:60px"></router-view>
-    <Dfooter class="Dfooter"></Dfooter>
+    <router-view style="margin-bottom:60px"></router-view>    
   </div>
 </template>
 
 <script>
 import Dfooter from './components/common/Dfooter/Dfooter';
+import BMap from 'BMap';
 export default {
   name: 'App',
   components:{ 
@@ -25,10 +25,7 @@ export default {
   overflow: hidden;
 }
 .Dfooter{
-  position:fixed;
-  margin: 0;
-  bottom:0;
-  width: 100%;
+  
 }
 .hr{
   border-top: solid 1px #EEE; 
